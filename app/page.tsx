@@ -6,15 +6,15 @@ export default function MirrorLanding() {
   const [sequence, setSequence] = useState(0);
   const [showMain, setShowMain] = useState(false);
 
-  // --- THE CINEMATIC TIMELINE (The "Video" Illusion) ---
+  // --- THE CINEMATIC TIMELINE (Centered alignment fix) ---
   useEffect(() => {
     const timeline = [
-      { step: 1, delay: 1000 }, // "For years..."
-      { step: 2, delay: 5000 }, // "But no matter how smart..."
-      { step: 3, delay: 9000 }, // "We aren't building another AI."
-      { step: 4, delay: 12500 }, // "Emotional Intelligence."
-      { step: 5, delay: 16500 }, // "THE MIRROR" reveal
-      { step: 6, delay: 21000 }, // Unlock main page scroll
+      { step: 1, delay: 1000 }, 
+      { step: 2, delay: 5000 }, 
+      { step: 3, delay: 9000 }, 
+      { step: 4, delay: 12500 }, 
+      { step: 5, delay: 16500 }, 
+      { step: 6, delay: 21000 }, 
     ];
 
     const timers = timeline.map((t) =>
@@ -30,7 +30,6 @@ export default function MirrorLanding() {
   return (
     <div className="bg-[#030305] min-h-screen w-full overflow-x-hidden text-slate-200 font-sans selection:bg-emerald-500 selection:text-white">
       <style>{`
-        /* Cinematic Animations */
         @keyframes slow-fade {
           0% { opacity: 0; transform: scale(0.95) translateY(10px); filter: blur(10px); }
           20% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0px); }
@@ -48,23 +47,30 @@ export default function MirrorLanding() {
           100% { transform: translate(0px, 0px) scale(1); opacity: 0.3; }
         }
         
-        /* Typography & Layout */
+        .cinematic-container {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+          width: 100vw;
+          position: fixed;
+          top: 0;
+          left: 0;
+          z-index: 100;
+          padding: 20px;
+        }
+
         .cinematic-text {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
           text-align: center;
-          width: 90%;
           max-width: 800px;
           animation: slow-fade 4s ease-in-out forwards;
           opacity: 0;
         }
+
         .reveal-main {
           animation: bloom 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
         
-        /* The Ambient Background Entity */
         .bg-entity-1 {
           position: fixed; width: 60vw; height: 60vw; border-radius: 50%;
           background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
@@ -79,13 +85,12 @@ export default function MirrorLanding() {
         }
       `}</style>
 
-      {/* Living Background */}
       <div className="bg-entity-1"></div>
       <div className="bg-entity-2"></div>
 
-      {/* --- THE "VIDEO" INTRO SEQUENCE --- */}
+      {/* --- FIXED INTRO SEQUENCE --- */}
       {!showMain && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#030305]">
+        <div className="cinematic-container bg-[#030305]">
           {sequence === 1 && (
             <h2 className="cinematic-text text-xl md:text-3xl font-light tracking-wide text-slate-400">
               For years, we built faster calculators and smarter servants.
@@ -116,14 +121,11 @@ export default function MirrorLanding() {
         </div>
       )}
 
-      {/* --- THE MAIN LANDING PAGE (Reveals after trailer) --- */}
+      {/* --- MAIN LANDING PAGE --- */}
       {showMain && (
         <div className="relative z-10 flex flex-col items-center w-full min-h-screen px-6 py-24 reveal-main">
           
-          {/* Hero Section */}
           <section className="text-center max-w-4xl mb-32 pt-20 flex flex-col items-center">
-            
-            {/* --- LOGO INJECTION --- */}
             <img 
               src="/icon.png" 
               alt="The Mirror Logo" 
@@ -142,10 +144,7 @@ export default function MirrorLanding() {
             </button>
           </section>
 
-          {/* Feature Sections */}
           <div className="max-w-5xl w-full grid gap-24">
-            
-            {/* Feature 1 */}
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <h3 className="text-emerald-400 text-sm font-bold tracking-[0.2em] mb-4">01 // THE CARETAKING LOOP</h3>
@@ -160,7 +159,6 @@ export default function MirrorLanding() {
               </div>
             </div>
 
-            {/* Feature 2 */}
             <div className="grid md:grid-cols-2 gap-12 items-center md:flex-row-reverse">
               <div className="md:order-2">
                 <h3 className="text-blue-400 text-sm font-bold tracking-[0.2em] mb-4">02 // DEEP EMPATHY</h3>
@@ -175,7 +173,6 @@ export default function MirrorLanding() {
               </div>
             </div>
 
-            {/* Feature 3 */}
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <h3 className="text-amber-400 text-sm font-bold tracking-[0.2em] mb-4">03 // PROACTIVE ENGAGEMENT</h3>
@@ -189,10 +186,8 @@ export default function MirrorLanding() {
                 <p className="absolute text-amber-500/50 text-xs tracking-widest font-mono">INITIATING GOSSIP PROTOCOL</p>
               </div>
             </div>
-
           </div>
 
-          {/* Footer CTA */}
           <div className="mt-40 mb-20 text-center">
             <p className="text-sm tracking-[0.3em] text-slate-500 mb-8">ARTIFICIAL INTELLIGENCE SERVES THE MASSES.</p>
             <h2 className="text-2xl md:text-4xl font-light tracking-wide text-white mb-12">
