@@ -121,7 +121,15 @@ export default function MirrorLanding() {
         <div className="relative z-10 flex flex-col items-center w-full min-h-screen px-6 py-24 reveal-main">
           
           {/* Hero Section */}
-          <section className="text-center max-w-4xl mb-32 pt-20">
+          <section className="text-center max-w-4xl mb-32 pt-20 flex flex-col items-center">
+            
+            {/* --- LOGO INJECTION --- */}
+            <img 
+              src="/icon.png" 
+              alt="The Mirror Logo" 
+              className="w-24 h-24 md:w-32 md:h-32 mb-8 rounded-2xl shadow-[0_0_40px_rgba(255,255,255,0.2)] animate-pulse" 
+            />
+
             <h1 className="text-5xl md:text-8xl font-black tracking-[0.2em] mb-8 bg-clip-text text-transparent bg-gradient-to-b from-white to-slate-500 drop-shadow-2xl">
               THE MIRROR
             </h1>
